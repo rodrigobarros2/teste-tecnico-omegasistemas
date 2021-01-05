@@ -1,9 +1,11 @@
+import React from 'react';
+
 function App() {
-  return (
-    <div >
-      <h1>lol</h1>
-    </div>
-  );
+	return (
+		<div>
+			<h1>aa</h1>
+		</div>
+	);
 }
 
 export default App;
