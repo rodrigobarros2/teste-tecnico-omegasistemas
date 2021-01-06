@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
+import { Container } from './styles';
 
 function Testeapi() {
 	const [localities, setLocalities] = useState([]);
@@ -21,13 +20,20 @@ function Testeapi() {
 	}, []);
 
 	return (
-		<>
-			{localities.map((localitie) => (
-				<div key={localitie.id}>
-					<h2>{localitie.sigla}</h2>
-				</div>
-			))}
-		</>
+		<Container>
+			<select name="hall">
+				{localities.map((localitie) => (
+					<>
+						<option value="" selected="selected" hidden="hidden">
+							selecione o seu estado
+						</option>
+						<option value="locality">{localitie.nome}</option>
+					</>
+				))}
+			</select>
+
+			<button type="button">Buscar estatísticas</button>
+		</Container>
 	);
 }
 
