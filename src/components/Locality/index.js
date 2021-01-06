@@ -1,40 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from './styles';
+import { Container, ContainerCovid, Counter } from './styles';
 
-function Testeapi() {
-	const [localities, setLocalities] = useState([]);
+function Locality() {
+	const [selectValue, setSelectValue] = useState();
+	const [infoCovids, setInfoCovids] = useState([]);
 
 	useEffect(() => {
 		async function loadApi() {
 			try {
-				const responseApiLocalities = await fetch(
-					'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
+				const responseApiCovid = await fetch(
+					'https://covid19-brazil-api.now.sh/api/report/v1'
 				);
-				const data = await responseApiLocalities.json();
-				setLocalities(data);
+				const { data } = await responseApiCovid.json();
+				setInfoCovids(data);
 			} catch (error) {
-				console.log('Estado Não Encontrado');
+				console.log('Casos Não encontrado');
 			}
 		}
 		loadApi();
 	}, []);
 
-	return (
-		<Container>
-			<select name="hall">
-				{localities.map((localitie) => (
-					<>
-						<option value="" selected="selected" hidden="hidden">
-							selecione o seu estado
-						</option>
-						<option value="locality">{localitie.nome}</option>
-					</>
-				))}
-			</select>
+	function handleSelection() {
+		console.log(selectValue);
+	}
 
-			<button type="button">Buscar estatísticas</button>
-		</Container>
+	return (
+		<>
+			<Container>
+				<select
+					name="select"
+					value={selectValue}
+					onChange={(e) => setSelectValue(e.target.value)}
+				>
+					<option selected="selected" hidden="hidden">
+						selecione o seu estado
+					</option>
+					{infoCovids.map((infoCovid) => (
+						<>
+							<option value={infoCovid.uf}>
+								{infoCovid.state}
+							</option>
+						</>
+					))}
+				</select>
+
+				<button type="button" onClick={handleSelection}>
+					Buscar estatísticas
+				</button>
+			</Container>
+
+			<ContainerCovid>
+				<Counter>
+					<div className="grid-container">
+						<div className="last-update">Ultima atualização</div>
+						<div className="cases">Casos</div>
+						<div className="recovered">Recuperados</div>
+						<div className="suspects">Suspeitos</div>
+						<div className="deaths">Mortes</div>
+					</div>
+				</Counter>
+			</ContainerCovid>
+		</>
 	);
 }
 
-export default Testeapi;
+export default Locality;
