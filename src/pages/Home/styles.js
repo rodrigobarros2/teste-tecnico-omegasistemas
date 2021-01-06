@@ -1,16 +1,29 @@
 import styled from 'styled-components';
+import { device } from '../../config/breakpoints';
 
 export const Container = styled.div`
 	justify-content: center;
 	display: flex;
 	height: 90%;
 	background-color: #3b5998;
+	@media ${device.tablet} {
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+	}
 `;
 export const LocalityContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 2% 0 0 0;
 	width: 25%;
+	@media ${device.tablet} {
+		margin: 1% auto;
+		width: 320px;
+	}
+	@media ${device.phone} {
+		width: 300px;
+	}
 	select {
 		padding: 0 0px 0px 5%;
 		height: 70px;
@@ -29,6 +42,9 @@ export const CovidContent = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 2% 0 0 5%;
+	@media ${device.tablet} {
+		margin: 0;
+	}
 `;
 export const Counter = styled.div`
 	.grid-container {
@@ -48,6 +64,14 @@ export const Counter = styled.div`
 			justify-content: center;
 			height: 150px;
 			width: 200px;
+			@media ${device.tablet} {
+				height: 100px;
+				width: 150px;
+			}
+			@media ${device.phone} {
+				height: 80px;
+				width: 140px;
+			}
 
 			span {
 				margin: 10px 0 0 0;
