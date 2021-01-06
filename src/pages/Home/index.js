@@ -41,9 +41,11 @@ function Home() {
 	}, []);
 
 	function handleSelection() {
-		const casoscovid = infoCovids.find((infos) => infos.uf === selectValue);
-		const lastupdate = new Date(casoscovid.datetime);
-		casoscovid.datetime = `${
+		/* selecting options */
+		const covidCases = infoCovids.find((infos) => infos.uf === selectValue);
+		/*  formatting dates */
+		const lastupdate = new Date(covidCases.datetime);
+		covidCases.datetime = `${
 			lastupdate.getDay() <= 9
 				? `0${lastupdate.getDay()}`
 				: lastupdate.getDay()
@@ -60,8 +62,8 @@ function Home() {
 				? `0${lastupdate.getMinutes()}`
 				: lastupdate.getMinutes()
 		}`;
-		setCasos(casoscovid);
-		console.log(casoscovid);
+		setCasos(covidCases);
+		console.log(covidCases);
 	}
 
 	return (
@@ -95,7 +97,7 @@ function Home() {
 						<div className="grid-container">
 							<div className="last-update">
 								Ultima atualização
-								{casos.datetime}
+								<span>{casos.datetime}</span>
 							</div>
 							<div className="cases">
 								Casos
@@ -103,15 +105,15 @@ function Home() {
 							</div>
 							<div className="recovered">
 								Recuperados
-								{casos.refuses}
+								<span>{casos.refuses}</span>
 							</div>
 							<div className="suspects">
 								Suspeitos
-								{casos.suspects}
+								<span>{casos.suspects}</span>
 							</div>
 							<div className="deaths">
 								Mortes
-								{casos.deaths}
+								<span>{casos.deaths}</span>
 							</div>
 						</div>
 					</Counter>
