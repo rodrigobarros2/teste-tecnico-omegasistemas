@@ -1,13 +1,13 @@
 const size = {
-	phone: '320px',
+	phone: '330px',
 	tablet: '768px',
 	desktop: '1024px',
 	monitor: '1280px',
 };
 
 export const device = {
-	phone: `(min-width: ${size.phone})`,
-	tablet: `(min-width: ${size.tablet})`,
-	desktop: `(min-width: ${size.desktop})`,
-	monitor: `(min-width: ${size.monitor})`,
+	phone: `(max-width: ${size.phone})`,
+	tablet: `(max-width: ${size.tablet})`,
+	desktop: `(max-width: ${size.desktop})`,
+	monitor: `(max-width: ${size.monitor})`,
 };
