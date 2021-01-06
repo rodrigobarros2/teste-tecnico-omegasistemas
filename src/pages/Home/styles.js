@@ -43,10 +43,15 @@ export const Counter = styled.div`
 			'last-update last-update';
 		div {
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			height: 150px;
 			width: 200px;
+
+			span {
+				margin: 10px 0 0 0;
+			}
 		}
 	}
 
