@@ -3,6 +3,7 @@ import MontserratRegular from '../fonts/Montserrat-Regular.ttf';
 
 export default createGlobalStyle`
     * {
+		font: 16px 'Montserrat', sans-serif;
         margin: 0;
         padding: 0;
         outline: 0;
@@ -30,8 +31,4 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
-	h1 {
-		color:red;
-		background-color: pink;
-	}
 `;
